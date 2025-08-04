@@ -11,11 +11,15 @@
 #include "Win32/opensslconf.h"
 #elif defined(__linux__)
 #include "linux-x86_64/opensslconf.h"
-#elif defined(__APPLE__) && defined(TARGET_OS_MAC)
-#include "macosx-x86_64/opensslconf.h"
-#elif defined(__APPLE__) && defined(TARGET_OS_IPHONE) && defined(TARGET_IPHONE_SIMULATOR)
-#include "ios-x86_64/opensslconf.h"
-#elif defined(__APPLE__) && defined(TARGET_OS_IPHONE)
+#elif defined(__APPLE__) && TARGET_OS_OSX == 1 && defined(__x86_64__)
+#include "macos-x86_64/opensslconf.h"
+#elif defined(__APPLE__) && TARGET_OS_OSX == 1 && defined(__aarch64__)
+#include "macos-arm64/opensslconf.h"
+#elif defined(__APPLE__) && TARGET_OS_IOS == 1 && TARGET_OS_SIMULATOR == 1 && defined(__x86_64__)
+#include "iossim-x86_64/opensslconf.h"
+#elif defined(__APPLE__) && TARGET_OS_IOS == 1 && TARGET_OS_SIMULATOR == 1 && defined(__aarch64__)
+#include "iossim-arm64/opensslconf.h"
+#elif defined(__APPLE__) && TARGET_OS_IOS == 1
 #include "ios-arm64/opensslconf.h"
 #elif defined(__ANDROID__) && defined(__arm__)
 #include "android-arm/opensslconf.h"
