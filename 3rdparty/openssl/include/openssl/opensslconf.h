@@ -1,34 +1,17 @@
-#ifndef MY_OPENSSL_CONF_H
-#define MY_OPENSSL_CONF_H
+/*
+ * Copyright 2019-2021 The OpenSSL Project Authors. All Rights Reserved.
+ *
+ * Licensed under the Apache License 2.0 (the "License").  You may not use
+ * this file except in compliance with the License.  You can obtain a copy
+ * in the file LICENSE in the source distribution or at
+ * https://www.openssl.org/source/license.html
+ */
 
-#ifdef __APPLE__
-#include <TargetConditionals.h>
-#endif // __APPLE__
+#ifndef OPENSSL_OPENSSLCONF_H
+#define OPENSSL_OPENSSLCONF_H
+#pragma once
 
-#if defined(_WIN64)
-#include "Win64/opensslconf.h"
-#elif defined(_WIN32)
-#include "Win32/opensslconf.h"
-#elif defined(__linux__)
-#include "linux-x86_64/opensslconf.h"
-#elif defined(__APPLE__) && TARGET_OS_OSX == 1 && defined(__x86_64__)
-#include "macos-x86_64/opensslconf.h"
-#elif defined(__APPLE__) && TARGET_OS_OSX == 1 && defined(__aarch64__)
-#include "macos-arm64/opensslconf.h"
-#elif defined(__APPLE__) && TARGET_OS_IOS == 1 && TARGET_OS_SIMULATOR == 1 && defined(__x86_64__)
-#include "iossim-x86_64/opensslconf.h"
-#elif defined(__APPLE__) && TARGET_OS_IOS == 1 && TARGET_OS_SIMULATOR == 1 && defined(__aarch64__)
-#include "iossim-arm64/opensslconf.h"
-#elif defined(__APPLE__) && TARGET_OS_IOS == 1
-#include "ios-arm64/opensslconf.h"
-#elif defined(__ANDROID__) && defined(__arm__)
-#include "android-arm/opensslconf.h"
-#elif defined(__ANDROID__) && defined(__aarch64__)
-#include "android-arm64/opensslconf.h"
-#elif defined(__ANDROID__) && defined(__x86_64__)
-#include "android-x86_64/opensslconf.h"
-#else
-#error Unsupported architecture
-#endif
+#include <openssl/configuration.h>
+#include <openssl/macros.h>
 
-#endif // MY_OPENSSL_CONF_H
+#endif /* OPENSSL_OPENSSLCONF_H */
